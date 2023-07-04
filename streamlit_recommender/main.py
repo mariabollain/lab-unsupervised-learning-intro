@@ -1,7 +1,7 @@
 # Import libraries
 import streamlit as st
 import pandas as pd
-import numpy as np
+import os
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -17,8 +17,10 @@ audio_features_songs = pd.read_csv("audio_features_songs_final.csv")
 X = pd.read_csv("X_scaled.csv")
 
 # Start Spotipy with user credentials
-client_id = "4617eb96ef9545239b68c0d443d5baba"
-client_secret = "93d966e07836444e9f4a9ddd881f0060"
+# client_id = "4617eb96ef9545239b68c0d443d5baba"
+# client_secret = "93d966e07836444e9f4a9ddd881f0060"
+client_id = os.getenv('spotify_id')
+client_secret = os.getenv('spotify_secret')
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id, client_secret))
 
 # Train model and predict
