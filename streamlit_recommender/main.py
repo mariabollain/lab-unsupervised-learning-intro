@@ -39,7 +39,7 @@ def recommend_song(title, artist):
                     return ' - '.join([recommendation["title"][0], recommendation["artist"][0]])
                     break
 
-                    # If it's not in the Billboard list, try to find the song in Spotipy, if not return an error message
+    # If it's not in the Billboard list, try to find the song in Spotipy, if not return an error message
     elif sp.search(q=f"track:{title}", limit=1)["tracks"]["total"] == 0:
         return "Could not find the song"
 
@@ -74,11 +74,6 @@ def main():
 
     # Title
     st.title(":notes: Song recommender :notes:")
-
-    # Store the initial value of widgets in session state
-    if "visibility" not in st.session_state:
-        st.session_state.visibility = "visible"
-        st.session_state.disabled = False
 
     # User input
     user_title = st.text_input(":musical_keyboard: Enter the song title :musical_keyboard:")
