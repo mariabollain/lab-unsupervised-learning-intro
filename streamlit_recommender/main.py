@@ -5,7 +5,6 @@ import os
 
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
-from getpass import getpass
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.cluster import KMeans
@@ -22,7 +21,7 @@ client_secret = os.getenv('spotify_secret')
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id, client_secret))
 
 # Train model and predict
-kmeans = KMeans(n_clusters=4, n_init=10)
+kmeans = KMeans(n_clusters=6, n_init=10)
 kmeans.fit(X)
 clusters = kmeans.predict(X)
 songs_clusters = audio_features_songs.copy()
