@@ -21,7 +21,7 @@ client_secret = os.getenv('spotify_secret')
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id, client_secret))
 
 # Train model and predict
-kmeans = KMeans(n_clusters=6, n_init=10)
+kmeans = KMeans(n_clusters=7, n_init=10)
 kmeans.fit(X)
 clusters = kmeans.predict(X)
 songs_clusters = audio_features_songs.copy()
